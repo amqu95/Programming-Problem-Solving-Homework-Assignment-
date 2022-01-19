@@ -1,0 +1,29 @@
+import java.util.Arrays;
+
+public class Sorter
+{  
+   static int count = 0;
+   public static void main(String[] args)
+   {  
+      int[] a = ArrayUtil.randomIntArray(10, 100);
+      int[] b = ArrayUtil.randomIntArray(10, 100);
+      
+      b = a;
+      
+      System.out.println("Random Integers: " + Arrays.toString(a));
+      System.out.println();
+      
+      SelectionSorter.sort(a);
+      System.out.println("Selection Sort: " + Arrays.toString(a));
+
+      System.out.println();
+      
+      MergeSorter.sort(b);
+      System.out.println("Merge Sort: " + Arrays.toString(b));
+      System.out.println("iterations in merge sort: " + count );
+
+
+   }
+}
+
+   
