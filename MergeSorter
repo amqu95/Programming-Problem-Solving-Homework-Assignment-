@@ -1,0 +1,73 @@
+public class MergeSorter
+{
+   static int count = 0;
+   static int count1 = 0;
+   static int count2 = 0;
+   static int count3 = 0;
+   public static void sort(int[] b)
+   {  
+      if (b.length <= 1) { return; }
+      int[] first = new int[b.length / 2];
+      int[] second = new int[b.length - first.length];
+
+      for (int i = 0; i < first.length; i++) 
+      { 
+         first[i] = b[i];
+         count1++;
+      }
+      for (int i = 0; i < second.length; i++) 
+      { 
+         second[i] = b[first.length + i]; 
+         count2++;
+      }
+      sort(first);
+      sort(second);
+      merge(first, second, b);
+      count = count1 + count2 + count3;
+   }
+
+   private static int merge(int[] first, int[] second, int[] b)
+   {  
+      int iFirst = 0;
+      int iSecond = 0;
+      int j = 0;
+     
+      
+      while (iFirst < first.length && iSecond < second.length)
+      {  
+         if (first[iFirst] < second[iSecond])
+         {  
+            b[j] = first[iFirst];
+            iFirst++;
+         }
+         else
+         {  
+            b[j] = second[iSecond];
+            iSecond++;
+         }
+         j++;
+         count1++;
+      }
+
+      
+      while (iFirst < first.length) 
+      { 
+         b[j] = first[iFirst]; 
+         iFirst++; j++;
+         count2++;
+      }
+      
+      while (iSecond < second.length) {
+      
+         b[j] = second[iSecond]; 
+         iSecond++; j++;
+         count3++;
+        }
+      System.out.println("Iterations in  sort: " + count);
+
+      return count1 + count2+ count3;
+
+
+   }
+   
+}
